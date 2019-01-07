@@ -66,8 +66,8 @@
               }
           },
       });
-      $('#title').val('');
-      $('#body').val('');
+      $('#notes').val('');
+
   });
 
   // function Edit POST
@@ -95,7 +95,7 @@
               'id': $("#fid").val(),
               'notes': $('#t').val()
           },
-          success: function(data) {
+          success: function(data){
               $('.post' + data.id).replaceWith(" "+
                   "<tr class='post" + data.id + "'>"+
                   "<td>" + data.id + "</td>"+
@@ -107,8 +107,10 @@
                   "<td>" + data.updated_at + "</td>"+
                   "<td><button class='show-modal btn btn-info btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-eye'></span></button> <button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='glyphicon glyphicon-pencil'></span></button> <button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                   "</tr>");
+
           }
       });
+      $('#notes').val('');
   });
 
 

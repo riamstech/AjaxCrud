@@ -75,7 +75,7 @@
       </div>
           <div class="modal-footer">
             <button class="btn btn-success" type="submit" id="add">
-              <span class="glyphicon glyphicon-plus"></span>Save CaseNote
+              <span class="glyphicon glyphicon-plus"></span> Save
             </button>
             <button class="btn btn-danger" type="button" data-dismiss="modal">
               <span class="glyphicon glyphicon-remobe"></span>Close
@@ -134,7 +134,7 @@
         </form>
                 {{-- Form Delete Post --}}
         <div class="deleteContent">
-          Are You sure want to delete <span class="title"></span>?
+          Are You sure want to delete <span class="notes"></span>?
           <span class="hidden id"></span>
         </div>
 
