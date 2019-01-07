@@ -13,9 +13,12 @@
     <table class="table table-bordered" id="table">
       <tr>
         <th width="150px">No</th>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Create At</th>
+        <th>Patient ID</th>
+        <th>Employee ID</th>
+        <th>Notes</th>
+        <th>Status ID</th>
+        <th>Created At</th>
+        <th>Updated At</th>
         <th class="text-center" width="150px">
           <a href="#" class="create-modal btn btn-success btn-sm">
             <i class="glyphicon glyphicon-plus"></i>
@@ -24,20 +27,23 @@
       </tr>
       {{ csrf_field() }}
       <?php  $no=1; ?>
-      @foreach ($post as $value)
-        <tr class="post{{$value->id}}">
+      @foreach ($casenotes as $casenote)
+        <tr class="post{{$casenote->id}}">
           <td>{{ $no++ }}</td>
-          <td>{{ $value->title }}</td>
-          <td>{{ $value->body }}</td>
-          <td>{{ $value->created_at }}</td>
+          <td>{{ $casenote->patients_id}}</td>
+          <td>{{ $casenote->employee_id}}</td>
+          <td>{{ $casenote->notes}}</td>
+          <td>{{ $casenote->status_id}}</td>
+          <td>{{ $casenote->created_at}}</td>
+          <td>{{ $casenote->updated_at}}</td>
           <td>
-            <a href="#" class="show-modal btn btn-info btn-sm" data-id="{{$value->id}}" data-title="{{$value->title}}" data-body="{{$value->body}}">
+            <a href="#" class="show-modal btn btn-info btn-sm" data-id="{{$casenote->id}}" data-notes="{{$casenote->notes}}" >
               <i class="fa fa-eye"></i>
             </a>
-            <a href="#" class="edit-modal btn btn-warning btn-sm" data-id="{{$value->id}}" data-title="{{$value->title}}" data-body="{{$value->body}}">
+            <a href="#" class="edit-modal btn btn-warning btn-sm" data-id="{{$casenote->id}}" data-notes="{{$casenote->notes}}" >
               <i class="glyphicon glyphicon-pencil"></i>
             </a>
-            <a href="#" class="delete-modal btn btn-danger btn-sm" data-id="{{$value->id}}" data-title="{{$value->title}}" data-body="{{$value->body}}">
+            <a href="#" class="delete-modal btn btn-danger btn-sm" data-id="{{$casenote->id}}" data-notes="{{$casenote->notes}}" >
               <i class="glyphicon glyphicon-trash"></i>
             </a>
           </td>
@@ -45,7 +51,7 @@
       @endforeach
     </table>
   </div>
-  {{$post->links()}}
+  {{$casenotes->links()}}
 </div>
 {{-- Modal Form Create Post --}}
 <div id="create" class="modal fade" role="dialog">
@@ -58,28 +64,20 @@
       <div class="modal-body">
         <form class="form-horizontal" role="form">
           <div class="form-group row add">
-            <label class="control-label col-sm-2" for="title">Title :</label>
+            <label class="control-label col-sm-2" for="title">CaseNote:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="title" name="title"
-              placeholder="Your Title Here" required>
-              <p class="error text-center alert alert-danger hidden"></p>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="body">Body :</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="body" name="body"
-              placeholder="Your Body Here" required>
+              <input type="text" class="form-control" id="notes" name="notes"
+              placeholder="Case Note Here" required>
               <p class="error text-center alert alert-danger hidden"></p>
             </div>
           </div>
         </form>
       </div>
           <div class="modal-footer">
-            <button class="btn btn-warning" type="submit" id="add">
-              <span class="glyphicon glyphicon-plus"></span>Save Post
+            <button class="btn btn-success" type="submit" id="add">
+              <span class="glyphicon glyphicon-plus"></span>Save CaseNote
             </button>
-            <button class="btn btn-warning" type="button" data-dismiss="modal">
+            <button class="btn btn-danger" type="button" data-dismiss="modal">
               <span class="glyphicon glyphicon-remobe"></span>Close
             </button>
           </div>
@@ -100,13 +98,10 @@
                       <b id="i"/>
                     </div>
                     <div class="form-group">
-                      <label for="">Title :</label>
+                      <label for="">CaseNote :</label>
                       <b id="ti"/>
                     </div>
-                    <div class="form-group">
-                      <label for="">Body :</label>
-                      <b id="by"/>
-                    </div>
+                   
                     </div>
                     </div>
                   </div>
@@ -131,16 +126,9 @@
           </div>
 
           <div class="form-group">
-            <label class="control-label col-sm-2"for="title">Title</label>
+            <label class="control-label col-sm-2"for="title">CaseNote:</label>
             <div class="col-sm-10">
             <input type="name" class="form-control" id="t">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="control-label col-sm-2"for="body">Body</label>
-            <div class="col-sm-10">
-            <textarea type="name" class="form-control" id="b"></textarea>
             </div>
           </div>
         </form>

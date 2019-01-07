@@ -16,10 +16,10 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['web']], function() {
-  Route::resource('post','PostController');
-  Route::POST('addPost','PostController@addPost');
-  Route::POST('editPost','PostController@editPost');
-  Route::POST('deletePost','PostController@deletePost');
+  Route::resource('casenote','CaseNoteController');
+  Route::POST('addCaseNote','CaseNoteController@addCaseNote');
+  Route::POST('editCaseNote','CaseNoteController@editCaseNote');
+  Route::POST('deleteCaseNote','CaseNoteController@deleteCaseNote');
 });
 
 Auth::routes();
