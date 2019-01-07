@@ -4,7 +4,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-12">
-    <h1>Simple Laravel CRUD Ajax</h1>
+    <h2 class="display-6">Case Notes</h2>
   </div>
 </div>
 
@@ -66,8 +66,8 @@
           <div class="form-group row add">
             <label class="control-label col-sm-2" for="title">CaseNote:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="notes" name="notes"
-              placeholder="Case Note Here" required>
+              <textarea type="text" class="form-control" id="notes" name="notes"
+                        placeholder="Case Note Here" cols="5" rows="5" required></textarea>
               <p class="error text-center alert alert-danger hidden"></p>
             </div>
           </div>
@@ -101,7 +101,7 @@
                       <label for="">CaseNote :</label>
                       <b id="ti"/>
                     </div>
-                   
+
                     </div>
                     </div>
                   </div>
@@ -126,9 +126,9 @@
           </div>
 
           <div class="form-group">
-            <label class="control-label col-sm-2"for="title">CaseNote:</label>
+            <label class="control-label col-sm-2"for="title">Notes:</label>
             <div class="col-sm-10">
-            <input type="name" class="form-control" id="t">
+              <textarea type="name" class="form-control" id="t" cols="5" rows="5"></textarea>
             </div>
           </div>
         </form>

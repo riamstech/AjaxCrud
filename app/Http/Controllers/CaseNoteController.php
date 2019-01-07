@@ -41,8 +41,7 @@ class CaseNoteController extends Controller
     public function editCaseNote(request $request)
     {
         $casenote=CaseNotes::find ($request->id);
-        $casenote->title = $request->title;
-        $casenote->body = $request->body;
+        $casenote->notes = $request->notes;
         $casenote->save();
         return response()->json($casenote);
     }
