@@ -8,51 +8,42 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="table table-responsive">
-    <table class="table table-bordered" id="table">
-      <tr>
-        <th width="150px">No</th>
-        <th>Patient ID</th>
-        <th>Employee ID</th>
-        <th>Notes</th>
-        <th>Status ID</th>
-        <th>Created At</th>
-        <th>Updated At</th>
-        <th class="text-center" width="150px">
-          <a href="#" class="create-modal btn btn-success btn-sm">
-            <i class="glyphicon glyphicon-plus"></i>
-          </a>
-        </th>
-      </tr>
-      {{ csrf_field() }}
-      <?php  $no=1; ?>
-      @foreach ($casenotes as $casenote)
-        <tr class="post{{$casenote->id}}">
-          <td>{{ $no++ }}</td>
-          <td>{{ $casenote->patients_id}}</td>
-          <td>{{ $casenote->employee_id}}</td>
-          <td>{{ $casenote->notes}}</td>
-          <td>{{ $casenote->status_id}}</td>
-          <td>{{ $casenote->created_at}}</td>
-          <td>{{ $casenote->updated_at}}</td>
-          <td>
-            <a href="#" class="show-modal btn btn-info btn-sm" data-id="{{$casenote->id}}" data-notes="{{$casenote->notes}}" >
-              <i class="fa fa-eye"></i>
-            </a>
-            <a href="#" class="edit-modal btn btn-warning btn-sm" data-id="{{$casenote->id}}" data-notes="{{$casenote->notes}}" >
-              <i class="glyphicon glyphicon-pencil"></i>
-            </a>
-            <a href="#" class="delete-modal btn btn-danger btn-sm" data-id="{{$casenote->id}}" data-notes="{{$casenote->notes}}" >
-              <i class="glyphicon glyphicon-trash"></i>
-            </a>
-          </td>
-        </tr>
-      @endforeach
-    </table>
-  </div>
-  {{$casenotes->links()}}
+<div class="row m-2" >
+  <a href="#" class="create-modal btn btn-success btn-sm" align="left">
+    <i class="fa fa-plus"></i>
+  </a>
 </div>
+{{ csrf_field() }}
+@if($casenotes)
+
+      <div id="casenote-rows">
+      @foreach ($casenotes as $casenote)
+        <div class="row">
+        <div class="col-sm-12 post{{$casenote->id}}">
+          <div class="card  border-warning mb-3">
+            <div class="card-body">
+              <h5 class="card-title">{{$casenote->created_at}} {{($casenote->employee_id)}} {{($casenote->employee_id)}}  {{($casenote->employee_id)}}</h5>
+              <p> {{$casenote->updated_at}}</p>
+              <p class="card-text">{{$casenote->notes}}</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="show-modal btn btn-info btn-sm" data-id="{{$casenote->id}}" data-notes="{{$casenote->notes}}" >
+                <i class="fa fa-eye"></i>
+              </a>
+              <a href="#" class="edit-modal btn btn-warning btn-sm" data-id="{{$casenote->id}}" data-notes="{{$casenote->notes}}" >
+                <i class="fa fa-pencil"></i>
+              </a>
+              <a href="#" class="delete-modal btn btn-danger btn-sm" data-id="{{$casenote->id}}" data-notes="{{$casenote->notes}}" >
+                <i class="fa fa-trash"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        </div>
+      @endforeach
+      </div>
+  @endif
+
 {{-- Modal Form Create Post --}}
 <div id="create" class="modal fade" role="dialog">
   <div class="modal-dialog">

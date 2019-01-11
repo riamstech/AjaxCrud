@@ -7,13 +7,13 @@
   <title>Laravel Crud</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
@@ -29,8 +29,8 @@
   @yield('content')
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
   {{-- ajax Form Add Post--}}
   $(document).on('click','.create-modal', function() {
@@ -53,7 +53,7 @@
                   $('.error').text(data.errors.body);
               } else {
                   $('.error').remove();
-                  $('#table').append("<tr class='post" + data.id + "'>"+
+                  $('#casenote-rows').append("<tr class='post" + data.id + "'>"+
                       "<td>" + data.id + "</td>"+
                       "<td>" + data.patients_id + "</td>"+
                       "<td>" + data.employee_id + "</td>"+
@@ -61,7 +61,7 @@
                       "<td>" + data.status_id + "</td>"+
                       "<td>" + data.created_at + "</td>"+
                       "<td>" + data.updated_at + "</td>"+
-                      "<td><button class='show-modal btn btn-info btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-eye'></span></button> <button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='glyphicon glyphicon-pencil'></span></button> <button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
+                      "<td><button class='show-modal btn btn-info btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-eye'></span></button> <button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-pencil'></span></button> <button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-trash'></span></button></td>"+
                       "</tr>");
               }
           },
@@ -73,8 +73,8 @@
   // function Edit POST
   $(document).on('click', '.edit-modal', function() {
       $('#footer_action_button').text(" Update Note");
-      $('#footer_action_button').addClass('glyphicon-check');
-      $('#footer_action_button').removeClass('glyphicon-trash');
+      $('#footer_action_button').addClass('fa fa-check');
+      $('#footer_action_button').removeClass('fa-trash');
       $('.actionBtn').addClass('btn-success');
       $('.actionBtn').removeClass('btn-danger');
       $('.actionBtn').addClass('edit');
@@ -97,16 +97,15 @@
           },
           success: function(data){
               $('.post' + data.id).replaceWith(" "+
-                  "<tr class='post" + data.id + "'>"+
-                  "<td>" + data.id + "</td>"+
-                  "<td>" + data.patients_id + "</td>"+
-                  "<td>" + data.employee_id + "</td>"+
-                  "<td>" + data.notes + "</td>"+
-                  "<td>" + data.status_id + "</td>"+
-                  "<td>" + data.created_at + "</td>"+
-                  "<td>" + data.updated_at + "</td>"+
-                  "<td><button class='show-modal btn btn-info btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-eye'></span></button> <button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='glyphicon glyphicon-pencil'></span></button> <button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
-                  "</tr>");
+                  "<div class='col-sm-12 post" + data.id + "'>"+
+                  "<div class='card  border-warning mb-3'>"+
+                  "<div class='card-body'>"+
+                  "<h5 class='card-title'>" + data.created_at + " " + data.employee_id + " "+ data.employee_id + " " + data.employee_id + " </h5>"+
+                  "<p>" + data.updated_at + "</p>"+
+                  "<p class='card-text'>" + data.notes + "</p></div>"+
+                  "<div class='card-footer'>"+
+                  "<button class='show-modal btn btn-info btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-eye'></span></button> <button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-pencil'></span></button> <button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-trash'></span></button>"+
+                  "</div></div></div>");
 
           }
       });
@@ -117,8 +116,8 @@
   // form Delete function
   $(document).on('click', '.delete-modal', function() {
       $('#footer_action_button').text(" Delete");
-      $('#footer_action_button').removeClass('glyphicon-check');
-      $('#footer_action_button').addClass('glyphicon-trash');
+      $('#footer_action_button').removeClass('fa  fa-check');
+      $('#footer_action_button').addClass('fa fa-trash');
       $('.actionBtn').removeClass('btn-success');
       $('.actionBtn').addClass('btn-danger');
       $('.actionBtn').addClass('delete');

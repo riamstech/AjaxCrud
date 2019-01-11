@@ -11,7 +11,7 @@ class CaseNoteController extends Controller
 
     public function index()
     {
-        $casenotes = CaseNotes::paginate(4);
+        $casenotes = CaseNotes::orderBy('created_at', 'desc')->get();
         return view('casenote.index', compact('casenotes'));
     }
 
