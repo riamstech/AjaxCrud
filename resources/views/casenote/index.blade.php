@@ -16,9 +16,9 @@
 {{ csrf_field() }}
 @if($casenotes)
 
-      <div id="casenote-rows">
+
       @foreach ($casenotes as $casenote)
-        <div class="row">
+        <div class="row" id="casenotes">
         <div class="col-sm-12 post{{$casenote->id}}">
           <div class="card  border-warning mb-3">
             <div class="card-body">
@@ -41,7 +41,7 @@
         </div>
         </div>
       @endforeach
-      </div>
+
   @endif
 
 {{-- Modal Form Create Post --}}
@@ -49,27 +49,26 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
+       <h4 class="modal-title"></h4>
+        <button type="button" class="close text-danger" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
         <form class="form-horizontal" role="form">
           <div class="form-group row add">
-            <label class="control-label col-sm-2" for="title">CaseNote:</label>
+            <label class="control-label col-sm-2 text-primary" for="title">CaseNote:</label>
             <div class="col-sm-10">
-              <textarea type="text" class="form-control" id="notes" name="notes"
-                        placeholder="Case Note Here" cols="5" rows="5" required></textarea>
-              <p class="error text-center alert alert-danger hidden"></p>
+              <textarea type="text" class="form-control" id="notes" name="notes" placeholder="Case Note Here" cols="10" rows="5" required></textarea>
+              {{--<p class="error text-center alert alert-danger" ></p>--}}
             </div>
           </div>
         </form>
       </div>
           <div class="modal-footer">
             <button class="btn btn-success" type="submit" id="add">
-              <span class="glyphicon glyphicon-plus"></span> Save
+              <span class="fa fa-plus"></span> Save
             </button>
             <button class="btn btn-danger" type="button" data-dismiss="modal">
-              <span class="glyphicon glyphicon-remobe"></span>Close
+              <span class="fa fa-remove"></span> Close
             </button>
           </div>
     </div>
@@ -80,16 +79,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"></h4>
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
                     <div class="modal-body">
                     <div class="form-group">
-                      <label for="">ID :</label>
+                      <label for="" class="text-primary">ID :</label>
                       <b id="i"/>
                     </div>
                     <div class="form-group">
-                      <label for="">CaseNote :</label>
+                      <label for="" class="text-primary">CaseNote :</label>
                       <b id="ti"/>
                     </div>
 
@@ -103,8 +102,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
         <form class="form-horizontal" role="modal">
@@ -124,20 +123,20 @@
           </div>
         </form>
                 {{-- Form Delete Post --}}
-        <div class="deleteContent">
-          Are You sure want to delete <span class="notes"></span>?
-          <span class="hidden id"></span>
+        <div class="deleteContent text-secondary">
+          Are You sure want to delete note ? <span class="notes text-danger"></span>
+          <span class="hidden id" hidden></span>
         </div>
 
       </div>
       <div class="modal-footer">
 
         <button type="button" class="btn actionBtn" data-dismiss="modal">
-          <span id="footer_action_button" class="glyphicon"></span>
+          <span id="footer_action_button" class="fa"></span>
         </button>
 
         <button type="button" class="btn btn-warning" data-dismiss="modal">
-          <span class="glyphicon glyphicon"></span>close
+          <span class="fa fa"></span>close
         </button>
 
       </div>

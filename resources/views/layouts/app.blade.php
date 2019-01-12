@@ -49,20 +49,20 @@
           success: function(data){
               if ((data.errors)) {
                   $('.error').removeClass('hidden');
-                  $('.error').text(data.errors.title);
-                  $('.error').text(data.errors.body);
+                  $('.error').text(data.errors.notes);
+
               } else {
                   $('.error').remove();
-                  $('#casenote-rows').append("<tr class='post" + data.id + "'>"+
-                      "<td>" + data.id + "</td>"+
-                      "<td>" + data.patients_id + "</td>"+
-                      "<td>" + data.employee_id + "</td>"+
-                      "<td>" + data.notes + "</td>"+
-                      "<td>" + data.status_id + "</td>"+
-                      "<td>" + data.created_at + "</td>"+
-                      "<td>" + data.updated_at + "</td>"+
-                      "<td><button class='show-modal btn btn-info btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-eye'></span></button> <button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-pencil'></span></button> <button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-trash'></span></button></td>"+
-                      "</tr>");
+                  $('#casenotes').append(" "+
+                      "<div class='col-sm-12 post" + data.id + "'>"+
+                      "<div class='card  border-warning mb-3'>"+
+                      "<div class='card-body'>"+
+                      "<h5 class='card-title'>" + data.created_at + " " + data.employee_id + " "+ data.employee_id + " " + data.employee_id + " </h5>"+
+                      "<p>" + data.updated_at + "</p>"+
+                      "<p class='card-text'>" + data.notes + "</p></div>"+
+                      "<div class='card-footer'>"+
+                      "<button class='show-modal btn btn-info btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-eye'></span></button> <button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-pencil'></span></button> <button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-notes='" + data.notes + "'><span class='fa fa-trash'></span></button>"+
+                      "</div></div></div>");
               }
           },
       });
@@ -153,5 +153,6 @@
       $('.modal-title').text('Show CaseNote');
   });
 </script>
+
 </body>
 </html>
